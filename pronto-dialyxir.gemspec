@@ -6,6 +6,8 @@ require 'pronto/dialyxir/version'
 Gem::Specification.new do |spec|
   spec.name          = 'pronto-dialyxir'
   spec.version       = Pronto::Dialyxir::VERSION
+  spec.authors       = ['Anastasiya Dyachenko']
+  spec.email         = ['apelsinka223@gmail.com']
 
   spec.summary       = 'Pronto runner for Dialyxir'
   spec.homepage      = 'https://github.com/llcaeon/pronto-dialyxir'
