@@ -1,0 +1,8 @@
+lib/my_app/suggestions.ex:6:no_return Function method/1 has no local return.
+lib/my_app_web/uploaders/images.ex:1:pattern_match_cov The pattern can never match the type since it covered by previous clauses.
+lib/my_app_web/channels/user_socket.ex:61:callback_arg_type_mismatch Type mismatch in 1st argument for id/1 callback in Phoenix.Socket behaviour.
+lib/my_app/dispatcher.ex:102:guard_fail Guard test can never succeed.
+lib/my_app/db.ex:12:no_return Function get/1 has no local return.
+lib/my_app/db.ex:66:call The function call will fail.
+lib/my_app/db.ex:93:call_to_missing Call to missing or private function MyApp.Db.subscribe/1.
+lib/my_app/accounts/user.ex:35:pattern_match The pattern can never match the type.
