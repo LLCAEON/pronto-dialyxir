@@ -11,8 +11,8 @@ module Pronto
       def lint(patch)
         return [] if patch.nil?
         path = patch.delta.new_file[:path]
-        return {} if @stdout.nil? || stdout == 0
-        OutputParser.new(path, stdout).parse
+        return {} if @stdout.nil? || @stdout == 0
+        OutputParser.new(path, @stdout).parse
       end
 
       private
