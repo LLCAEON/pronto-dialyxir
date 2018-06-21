@@ -1,6 +1,7 @@
 require 'pronto'
 require 'pronto/dialyxir/version'
 require 'pronto/dialyxir/wrapper'
+require 'pronto/dialyxir/output_parser'
 
 module Pronto
   class DialyxirRunner < Runner
@@ -11,17 +12,19 @@ module Pronto
     def run
       return [] unless @patches
 
+      wrapper = Dialyxir::Wrapper.new
+
       @patches.select { |p| p.additions > 0 }
           .select { |p| elixir_file?(p.new_file_full_path) }
-          .map { |p| inspect(p) }
+          .map { |p| inspect(p, wrapper) }
           .flatten
           .compact
     end
 
     private
 
-    def inspect(patch)
-      offences = Dialyxir::Wrapper.new(patch).lint
+    def inspect(patch, wrapper)
+      offences = wrapper.lint(patch)
       messages = []
 
       offences.each do |offence|
@@ -33,6 +36,7 @@ module Pronto
 
       messages.compact
     end
+
 
     def new_message(offence, line)
       path = line.patch.delta.new_file[:path]
