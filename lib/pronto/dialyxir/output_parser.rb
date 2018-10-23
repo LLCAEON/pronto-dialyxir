@@ -9,6 +9,17 @@ module Pronto
       end
 
       def parse
+        return {} if output.to_s.empty?
+
+        if output.lines[2].start_with?("== Compilation error")
+          return [{
+                    line: 0,
+                    column: nil,
+                    level: :error,
+                    message: output.chomp("\n")
+                  }]
+        end
+
         output.lines.map do |line|
           line_parts = line.split(':')
           type, message = line_parts[2..-1].join(":").split(' ', 2)
